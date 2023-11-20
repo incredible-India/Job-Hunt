@@ -20,5 +20,7 @@ namespace JobHunt_Models.User
         [Required]
         public string Password { get; set; }
 
+        public string Gender { get; set; }
+
     }
 }
