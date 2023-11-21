@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JobHunt-Interface\JobHunt-Interface.csproj" />
     <ProjectReference Include="..\JobHunt-Models\JobHunt-Models.csproj" />
   </ItemGroup>
 

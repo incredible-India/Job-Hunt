@@ -11,15 +11,18 @@ namespace JobHunt_Models.User
     {
         [Key]
         public int Id { get; set; }
-        public string LastName { get; set; }
         [Required]
+      
         public string FirstName { get; set; }
+      
+        public string? LastName { get; set; }
         public int Age { get; set; }
+        [Required]
         public string PhoneNo { get; set; }
-        public string AlternatePhoneNo { get; set; }
+        public string? AlternatePhoneNo { get; set; }
         [Required]
         public string Password { get; set; }
-
+        [Required]
         public string Gender { get; set; }
 
     }

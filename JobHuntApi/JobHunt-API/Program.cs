@@ -1,4 +1,6 @@
 
+using JobHunt_Interface.Implementation;
+using JobHunt_Interface.Interface;
 using JobHunt_Models.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +23,9 @@ namespace JonHunt_API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            //adding serivices
+            builder.Services.AddScoped<IUser, UserImplementation>();
 
             var app = builder.Build();
 
