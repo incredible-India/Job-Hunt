@@ -19,6 +19,7 @@ namespace JobHunt_Models.User
         public int Age { get; set; }
         [Required]
         public string PhoneNo { get; set; }
+        
         public string? AlternatePhoneNo { get; set; }
         [Required]
         public string Password { get; set; }

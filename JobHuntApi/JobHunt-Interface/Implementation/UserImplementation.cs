@@ -36,6 +36,9 @@ namespace JobHunt_Interface.Implementation
                 return new List<dynamic>() { false, "Phone Number should be equal to 18" };
             }
 
+            var isExist = _jobHuntContext.Users.Where(x => x.PhoneNo == user.PhoneNo);
+            if (isExist.Any()) { return new List<dynamic>() { false, "User already exist with this phone number, try to login..." }; }
+
             return new List<dynamic>() { true , user};
             
         }
