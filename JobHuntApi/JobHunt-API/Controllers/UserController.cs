@@ -24,6 +24,15 @@ namespace JonHunt_API.Controllers
             return Ok(response);
         }
 
+        [HttpPost("login")]
+        public async Task<OkObjectResult> Login([FromBody] Login user)
+        {
+            dynamic a = await _user.UserExist(user);
+            if (a[0] == true)
+                return Ok(a[1]);
+            else return Ok(a[1]);
+        }
+
         #endregion
     }
 }

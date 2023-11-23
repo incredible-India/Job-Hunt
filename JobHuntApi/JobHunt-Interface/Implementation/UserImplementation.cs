@@ -60,5 +60,30 @@ namespace JobHunt_Interface.Implementation
                 return isValid[1];
             }
         }
+
+        //to check whether the phone number and password is correct or not
+        public async Task<List<dynamic>> UserExist(Login user)
+        {
+            var isExist = _jobHuntContext.Users.Where(x => x.PhoneNo == user.PhoneNo);
+                     
+
+            if(isExist.Any())
+            {
+                if (isExist.ToList()[0].Password == user.Password)
+                {
+                    return new List<dynamic>() { true,"Login Success" };
+                }
+                else
+                {
+                    return new List<dynamic>() { false, "Invalid credentials" };
+                }
+            }
+            else
+            {
+                return new List<dynamic>() { false, "Invalid credentials" };
+           }
+          
+        }
+
     }
 }

@@ -12,6 +12,7 @@ namespace JobHunt_Interface.Interface
         public Task<List<dynamic>> IsValidUserInfo(NewUser user);
 
         public Task<dynamic> StoreInfoInDb(NewUser user);
+        public Task<List<dynamic>> UserExist(Login user);
 
     }
 }
