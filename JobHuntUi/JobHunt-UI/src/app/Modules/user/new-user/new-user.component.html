@@ -5,52 +5,79 @@
             <img src="../../../../assets/images/newuser.svg" alt="">
         </div>
         <div class="col-sm-8">
-            <form class="row g-3">
+        
+            <form class="row g-3" [formGroup]="newUser" (ngSubmit)="NewUserRegistration()">
                 <div class="col-md-4">
                   <label for="validationDefault01" class="form-label">First name</label>
-                  <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
+                  <br *ngIf="fname && fname.invalid && fname.touched">
+                  <span class="text-danger" *ngIf="fname && fname.invalid && fname.touched">*First Name is invalid</span>
+                  <br>
+                  <input type="text" class="form-control" id="validationDefault01"   formControlName="fname">
                 </div>
                 <div class="col-md-4">
                   <label for="validationDefault02" class="form-label">Last name</label>
-                  <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+                  <br *ngIf="lname && lname.invalid && lname.touched">
+                  <span class="text-danger" *ngIf="lname && lname.invalid && lname.touched">*Last Name is invalid</span>
+                  <br>
+                  <input type="text" class="form-control" id="validationDefault02"   formControlName="lname">
                 </div>
                 <div class="col-md-4">
                   <label for="validationDefaultUsername" class="form-label">Username</label>
                   <div class="input-group">
                     <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                    <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
+                    <br *ngIf="userName && userName.invalid && userName.touched">
+                    <span class="text-danger" *ngIf="userName && userName.invalid && userName.touched">*User Name is not valid</span>
+                    <br>
+                    <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2"  formControlName="userName">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <label for="validationDefault03" class="form-label">Age</label>
-                  <input type="text" class="form-control" id="validationDefault03" required>
+                  <br *ngIf="age && age.invalid && age.touched">
+                  <span class="text-danger" *ngIf="age && age.invalid && age.touched">*Age is invalid, should not less than 18</span>
+                  <br>
+                  <input type="text" class="form-control" id="validationDefault03"  formControlName="age">
                 </div>
                 <div class="col-md-4">
                     <label for="validationDefault03" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" id="validationDefault03" required>
+                    <br *ngIf="phoneNumber && phoneNumber.invalid && phoneNumber.touched">
+                    <span class="text-danger" *ngIf="phoneNumber && phoneNumber.invalid && phoneNumber.touched">*Phone Number is invalid</span>
+                    <br>
+                    <input type="text" class="form-control" id="validationDefault03"  formControlName="phoneNumber">
                 </div>
                 <div class="col-md-4">
                     <label for="validationDefault03" class="form-label">Alternate Phone Number</label>
-                    <input type="text" class="form-control" id="validationDefault03" required>
+                    <input type="text" class="form-control" id="validationDefault03"  formControlName="alternatePhoneNumber">
                 </div>
                 <div class="col-md-4">
                     <label for="validationDefault03" class="form-label">Password</label>
-                    <input type="text" class="form-control" id="validationDefault03" required>
+                    <br *ngIf="password && password.invalid && password.touched">
+                    <span class="text-danger" *ngIf="password && password.invalid && password.touched">*Password is invalid</span>
+                    <br>
+                    <input type="text" class="form-control" id="validationDefault03"  formControlName="password">
                 </div>
                 <div class="col-md-4">
                   <label for="validationDefault05" class="form-label">Gender</label>
-                  <input type="text" class="form-control" id="validationDefault05" required>
+                  <!-- <input type="text" class="form-control" id="validationDefault05" required formControlName="gender"> -->
+                  <select name="gender" id="gender" class="form-control" formControlName="gender">
+                    <br *ngIf="gender && gender.invalid && gender.touched">
+                    <span class="text-danger" *ngIf="gender && gender.invalid && gender.touched">*Gender is invalid</span>
+                    <br>
+                    <option value="male" [defaultSelected]="true">Male ♂</option>
+                    <option value="female">Female ♀</option>
+                    <option value="other">Other x</option>
+                  </select>
                 </div>
                 <div class="col-12">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" >
                     <label class="form-check-label" for="invalidCheck2" style="color: #FF725E;">
                       Agree to terms and conditions
                     </label>
                   </div>
                 </div>
                 <div class="col-12">
-                  <button class="btn btn-primary" type="submit" style="background-color: #FF725E;">Submit form</button>
+                  <button class="btn btn-primary" type="submit" style="background-color: #FF725E;" [disabled]="newUser.invalid" >Submit form</button>
                   <a href=" " style="color: #FF725E;" class="mx-3">Already an user? login instead</a>
                 </div>
               </form>

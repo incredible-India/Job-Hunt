@@ -4,7 +4,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersRoutingModule } from './user-routing.module';
 import { NewUserComponent } from './new-user/new-user.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../Shared/shared/shared.module';
 
 
@@ -20,7 +20,8 @@ import { SharedModule } from '../Shared/shared/shared.module';
     CommonModule,
     UsersRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: []
 })
