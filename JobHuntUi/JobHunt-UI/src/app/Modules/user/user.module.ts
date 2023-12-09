@@ -1,23 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegistrationComponent } from './registration/registration.component';
-import { NavbarComponent } from 'src/app/Components/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 import { UsersRoutingModule } from './user-routing.module';
 import { NewUserComponent } from './new-user/new-user.component';
-import { FooterComponent } from 'src/app/Components/footer/footer.component';
+
+import { SharedModule } from '../Shared/shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
     RegistrationComponent,
-    NavbarComponent,
+  
     NewUserComponent,
-    FooterComponent
+
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
-  ]
+    UsersRoutingModule,
+    SharedModule,
+    HttpClientModule
+  ],
+  providers: []
 })
 export class UserModule { }

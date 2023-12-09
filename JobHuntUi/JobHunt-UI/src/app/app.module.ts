@@ -7,21 +7,25 @@ import { RegistrationComponent } from './Modules/user/registration/registration.
 import { AboutComponent } from './Components/about/about.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { SharedModule } from './Modules/Shared/shared/shared.module';
+
 //import { NavbarComponent } from './Components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    NavbarComponent,
-    FooterComponent
+
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }
