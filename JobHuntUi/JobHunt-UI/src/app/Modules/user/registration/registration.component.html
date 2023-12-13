@@ -6,14 +6,20 @@
             <img src="./../../../../assets/images/Data report-pana.svg" alt="" class="img-fluid">
         </div>
         <div class="col-sm-4">
-            <form action="">
+            <form [formGroup]="loginUser" (ngSubmit)="submitLogin()">
 
                 <label for="username">Mobile Number</label>
-                <input type="text" class="form-control mt-4" placeholder="+91 8604470501" name="username">
+                <br *ngIf="phone && phone.invalid && phone.touched">
+                <span class="text-danger" *ngIf="phone && phone.invalid && phone.touched">*Invalid phone number</span>
+                <br>
+                <input type="text" class="form-control mt-4" placeholder="" name="username" formControlName="phone">
                 <label for="password" class=" mt-4">Password</label>
-                <input type="password" class="form-control mt-4" name="password">
+                <br *ngIf="password && password.touched && password.invalid">
+                <span class="text-danger" *ngIf="password && password.invalid && password.touched">*Invalid password</span>
+                <br>
+                <input type="password" class="form-control mt-4" name="password"  formControlName="password">
 
-                <input type="submit" value="Login" class="btn btn-lg mt-4" style="background-color: #FF725E;">
+                <input type="submit" value="Login" class="btn btn-lg mt-4" style="background-color: #FF725E;" >
                 <a href="/newuser"  class="newuser mt-4">New User</a>
 
             </form>

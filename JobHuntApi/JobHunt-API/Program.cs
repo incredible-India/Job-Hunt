@@ -3,6 +3,7 @@ using JobHunt_Interface.Implementation;
 using JobHunt_Interface.Interface;
 using JobHunt_Models.Database;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace JonHunt_API
 {
@@ -26,7 +27,7 @@ namespace JonHunt_API
 
             //adding serivices
             builder.Services.AddScoped<IUser, UserImplementation>();
-
+            builder.Services.AddCors();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -39,8 +40,8 @@ namespace JonHunt_API
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
-
+            app.UseCors();
+            app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             app.MapControllers();
 
             app.Run();
