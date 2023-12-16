@@ -11,6 +11,9 @@ export class RegistrationComponent implements OnInit {
   /**
    *
    */
+
+  showError:boolean = false;
+  Errormessage:string =""
   constructor(private user:userService) {
       
   }
@@ -30,8 +33,15 @@ export class RegistrationComponent implements OnInit {
     this.user.login(body).subscribe(r=>{
 
       console.log(r);
+      if(r[0]==false)
+    {
+      this.showError=true;
+      this.Errormessage = "Invalid Credentials.."
+    }
     },error=>{
      
+      this.showError =true;
+      this.Errormessage = "Server downtime :("
       
     })
     

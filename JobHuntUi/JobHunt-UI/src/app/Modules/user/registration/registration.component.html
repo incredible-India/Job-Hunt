@@ -21,7 +21,7 @@
 
                 <input type="submit" value="Login" class="btn btn-lg mt-4" style="background-color: #FF725E;" >
                 <a href="/newuser"  class="newuser mt-4">New User</a>
-
+                <span *ngIf="showError" class="text-danger" style="position: fixed;top: 415px;right: 208px;">{{Errormessage}}</span>
             </form>
         </div>
     </div>

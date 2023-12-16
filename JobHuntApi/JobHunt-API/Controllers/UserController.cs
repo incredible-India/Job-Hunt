@@ -29,8 +29,8 @@ namespace JonHunt_API.Controllers
         {
             dynamic a = await _user.UserExist(user);
             if (a[0] == true)
-                return Ok(a[1]);
-            else return Ok(a[1]);
+                return Ok(a);
+            else return Ok(a);
         }
 
         #endregion
