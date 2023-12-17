@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { login } from "../Models/login";
+import { NewUser } from "../Models/newUser";
 @Injectable ({
     providedIn: 'root'
 })
@@ -16,7 +17,12 @@ export class userService{
 
     login(body:login):Observable<any>{
         const url = this.baseUrl + "jobhunt/user/login";
-       return  this.http.post<any>(url,body)
+        return this.http.post<any>(url,body)
 
+    }
+
+    newUser(body:NewUser){
+        const url = this.baseUrl + "jobhunt/user/registration";
+        return this.http.post<any>(url,body)
     }
 }
