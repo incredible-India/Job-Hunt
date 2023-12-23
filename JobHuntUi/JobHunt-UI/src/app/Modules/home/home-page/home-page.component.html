@@ -1,4 +1,55 @@
-<app-navbar></app-navbar>
-<!-- <div class="container-fluid" style="background-image: url('https://credcv.com/wp-content/uploads/2021/06/benefits-of-having-an-own-job-portal_033e017b0_3810.jpeg'); height: 1000px; width: 100%; background-repeat: no-repeat;">
-    
-</div> -->
+<div class="row">
+    <div class="col-sm-4">
+        <app-navbar></app-navbar>
+
+    </div>
+
+    <div class="col-sm-8">
+       
+        <div class="row">
+
+<div class="col-sm-6">
+    <div class="col-auto" style="margin-top:40px;">
+        <label class="sr-only" for="inlineFormInputGroup">Username</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend" >
+            <div class="input-group-text" style="height: 39px; background-color: #FF725E; "><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
+          <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+        </div>
+      </div>
+</div>
+
+<div class="col-sm-6" style="margin-top: 40px;">
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="" class="btn btn-outline-danger">Search</a>
+        </div>
+        <div class="col-sm-2">
+         <a class="text-dark darkmode"  (click)="darkMode()">   <i class="fa-solid fa-moon" ></i></a>
+         
+        </div>
+<div class="col-sm-4">
+    <p><b>Welcome Namya !</b></p>
+</div>
+        <div class="col-sm-2">
+            <div class="profile-pic-dropdown">
+                <div class="profile-pic-preview" (click)="toggleDropdown()">
+                  <img src="https://t3.ftcdn.net/jpg/04/43/94/64/360_F_443946416_l2xXrFoIuUkItmyscOK5MNh6h0Vai3Ua.jpg" alt="Profile Pic">
+                </div>
+                <div class="dropdown-content" *ngIf="isDropdownOpen">
+                  <div class="dropdown-item" (click)="navigateToDashboard()">Dashboard</div>
+                  <div class="dropdown-item" (click)="logout()">Logout</div>
+                </div>
+              </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+        </div>
+
+    </div>
+</div>
