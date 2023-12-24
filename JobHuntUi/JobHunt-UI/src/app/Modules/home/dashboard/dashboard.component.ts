@@ -9,7 +9,7 @@ import Typed from 'typed.js';
 export class DashboardComponent implements OnInit{
   ngOnInit(): void {
     var typed = new Typed('.element', {
-      strings: ["Are you looking for a job", "You came at right place"],
+      strings: ["Are you looking for a job ?", "You came at right place!!"],
       typeSpeed: 50,
       loop:true
 

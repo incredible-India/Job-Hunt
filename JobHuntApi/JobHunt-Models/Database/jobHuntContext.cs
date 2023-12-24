@@ -1,4 +1,5 @@
-﻿using JobHunt_Models.User;
+﻿using JobHunt_Models.JobSeekers;
+using JobHunt_Models.User;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,6 @@ namespace JobHunt_Models.Database
         }
 
         public DbSet<NewUser> Users { get; set; }
+        public DbSet<JobSeeker> JobSeekers { get; set; }
     }
 }

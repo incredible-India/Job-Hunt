@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,8 @@ namespace JobHunt_Models.Common
 {
     public class address
     {
+        [Key]
+        public int Id { get; set; }
         public string DoorNo { get; set; }
         public string street { get; set; }
         public string area { get; set; }
