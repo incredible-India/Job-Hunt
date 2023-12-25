@@ -1,5 +1,6 @@
 ﻿using JobHunt_Interface.Interface;
 using JobHunt_Models.User;
+using JonHunt_API.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,11 +10,12 @@ namespace JonHunt_API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private IAuthentication _auth;
         private readonly IUser _user;
-        public UserController(IUser user)
+        public UserController(IUser user,IAuthentication auth)
         {
             _user = user;
-            
+            _auth = auth;   
         }
         #region Post
         //For the New User 
@@ -26,10 +28,13 @@ namespace JonHunt_API.Controllers
 
         [HttpPost("login")]
         public async Task<OkObjectResult> Login([FromBody] Login user)
-        {
+        {   IActionResult response = Unauthorized();
             dynamic a = await _user.UserExist(user);
             if (a[0] == true)
-                return Ok(a);
+            {
+                var token = _auth.GenerateToken(user);
+                return Ok(new {token =token});
+            }
             else return Ok(a);
         }
 

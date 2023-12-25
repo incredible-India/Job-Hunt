@@ -4,6 +4,10 @@ using JobHunt_Interface.Interface;
 using JobHunt_Models.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using JonHunt_API.Authentication;
 
 namespace JonHunt_API
 {
@@ -12,7 +16,20 @@ namespace JonHunt_API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            //adding authentication
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
+            {
+                option.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidIssuer = builder.Configuration["jwt:Issuer"],
+                    ValidAudience = builder.Configuration["jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["jwt:Key"]))
 
+                };
+            });
             //databse connection
             /*#getting the connection string from appsettings*/
             string? con = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -26,8 +43,10 @@ namespace JonHunt_API
             builder.Services.AddSwaggerGen();
 
             //adding serivices
+            
             builder.Services.AddScoped<IUser, UserImplementation>();
             builder.Services.AddScoped<IJobSeeker, JobSeekerImplementation>();
+            builder.Services.AddScoped<IAuthentication, JonHunt_API.Authentication.Authentication>();
             builder.Services.AddCors();
             var app = builder.Build();
 
@@ -39,7 +58,7 @@ namespace JonHunt_API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseCors();
             app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
