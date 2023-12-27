@@ -19,7 +19,7 @@ namespace JobHunt_Models.JobProviders
         public string? otherExpertise { get; set; }
         public long? Price { get; set; }
         public address? address { get; set; }
-        public string[]? media { get; set; }
+        public string? media { get; set; }
         public int ratings { get; set; }
         public string? comments { get; set; }
         public string? mobileNumber { get; set; }
