@@ -46,6 +46,7 @@ namespace JonHunt_API
             
             builder.Services.AddScoped<IUser, UserImplementation>();
             builder.Services.AddScoped<IJobSeeker, JobSeekerImplementation>();
+            builder.Services.AddScoped<IJobProvider, JobProviderImplementation>();
             builder.Services.AddScoped<IAuthentication, JonHunt_API.Authentication.Authentication>();
             builder.Services.AddCors();
             var app = builder.Build();

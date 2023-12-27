@@ -1,7 +1,6 @@
 ﻿using JobHunt_Interface.Interface;
 using JobHunt_Models.Database;
-using JobHunt_Models.JobSeekers;
-using Microsoft.IdentityModel.Tokens;
+using JobHunt_Models.JobProviders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,33 +9,28 @@ using System.Threading.Tasks;
 
 namespace JobHunt_Interface.Implementation
 {
-    public class JobSeekerImplementation : IJobSeeker
-
+    public class JobProviderImplementation : IJobProvider
     {
         private readonly jobHuntContext _jobHuntContext;
-        public JobSeekerImplementation(jobHuntContext job)
+
+        public JobProviderImplementation(jobHuntContext jobHuntContext)
         {
-            _jobHuntContext = job;
+            _jobHuntContext = jobHuntContext;
         }
-        public Task AddJobSeeker(JobSeeker jobseeker)
+        public Task AddJobProvider(jobProviders jobProviders)
         {
-            //first step check the mobile number and verify weather user exist or not
-            var isUser = _jobHuntContext.Users.Where(m => m.PhoneNo == jobseeker.mobileNumber); 
+            //check whether the user exist or not
+            var isUser = _jobHuntContext.Users.Where(m => m.PhoneNo == jobProviders.mobileNumber);
             if(isUser.Any())
             {
-               // jobseeker.SeekerName =isUser.ToList()[0].FirstName +" "+ isUser.ToList()[0].LastName;
-                _jobHuntContext.JobSeekers.Add(jobseeker);
+                _jobHuntContext.JobProviders.Add(jobProviders);
                 _jobHuntContext.SaveChanges();
                 return Task.CompletedTask;
-                
             }
             else
             {
                 throw new Exception("User dosen't exist.. make sure you have entered the registered mobile number");
             }
-
-
-          
         }
     }
 }
