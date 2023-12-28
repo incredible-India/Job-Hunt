@@ -32,5 +32,18 @@ namespace JobHunt_Interface.Implementation
                 throw new Exception("User dosen't exist.. make sure you have entered the registered mobile number");
             }
         }
+
+        public List<jobProviders> GetJobProvider(string no)
+        {
+            var a = _jobHuntContext.JobProviders.Where(x => x.mobileNumber == no);
+            if (a.Any())
+            {
+                return a.ToList();
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

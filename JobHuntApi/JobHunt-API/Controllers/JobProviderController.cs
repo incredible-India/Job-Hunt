@@ -25,5 +25,22 @@ namespace JonHunt_API.Controllers
         }
 
         #endregion
+
+        #region GET
+        [HttpGet("getProviderByMobileNo/{no}")]
+        public IActionResult GetJobProvider([FromRoute] string no) 
+        {
+            var jpl = _jobProvider.GetJobProvider(no);
+            if(jpl == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(jpl);
+            }
+
+        }
+        #endregion
     }
 }

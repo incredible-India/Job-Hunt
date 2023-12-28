@@ -38,5 +38,18 @@ namespace JobHunt_Interface.Implementation
 
           
         }
+
+        public List<JobSeeker> getSeekerByNo(string no)
+        {
+            var seeklist = _jobHuntContext.JobSeekers.Where(x => x.mobileNumber == no);
+            if (seeklist.Any())
+            {
+                return seeklist.ToList();
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

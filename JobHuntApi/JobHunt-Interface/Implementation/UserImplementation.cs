@@ -18,6 +18,21 @@ namespace JobHunt_Interface.Implementation
             _jobHuntContext = jobHuntContext;   
         }
 
+        public NewUser getUserById(int id)
+        {
+            var user = _jobHuntContext.Users.Where(x => x.Id == id);
+            if(user == null )
+            {
+                return null;
+            }
+            else
+            {
+                return user.FirstOrDefault();
+            }
+            
+            
+        }
+
         //this will validate the user info
         public async Task<List<dynamic>> IsValidUserInfo(NewUser user)
         {

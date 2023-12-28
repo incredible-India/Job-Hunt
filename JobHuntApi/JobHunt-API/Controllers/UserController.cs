@@ -39,5 +39,20 @@ namespace JonHunt_API.Controllers
         }
 
         #endregion
+
+        #region GET
+
+        [HttpGet("getUser/{id}")]
+        public IActionResult getUserById([FromRoute] int id)
+        {
+            var u = _user.getUserById(id);
+            if(u == null)
+            {
+                return NotFound();
+            }
+            else { return Ok(u); }
+        }
+
+        #endregion
     }
 }

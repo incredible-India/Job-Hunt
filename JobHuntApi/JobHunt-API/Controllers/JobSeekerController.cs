@@ -26,7 +26,25 @@ namespace JonHunt_API.Controllers
             var a =  _jobSeeker.AddJobSeeker(js);
             return Ok(a);
         }
-        
+
+        #endregion
+
+        #region GET
+        [HttpGet("getSeekerByMobileNo/{no}")]
+        public IActionResult getSeekerByNo([FromRoute]string no)
+        {
+            var seek = _jobSeeker.getSeekerByNo(no);
+            if(seek == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(seek);
+            }
+
+        }
+
         #endregion
     }
 }
