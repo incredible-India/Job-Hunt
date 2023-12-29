@@ -8,6 +8,7 @@ import { AboutComponent } from './Components/about/about.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { SharedModule } from './Modules/Shared/shared/shared.module';
+//import { UserProfileComponent } from './src/app/Modules/user/user-profile/user-profile.component';
 
 //import { NavbarComponent } from './Components/navbar/navbar.component';
 
@@ -15,6 +16,7 @@ import { SharedModule } from './Modules/Shared/shared/shared.module';
   declarations: [
     AppComponent,
     AboutComponent,
+  //  UserProfileComponent,
 
 
   ],
