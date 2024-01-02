@@ -7,3 +7,11 @@
 <div class="user-pic">
     <img class="img-fluid pic" src="./../../../../assets/images/tc.webp" alt="">
 </div>
+
+<div *ngIf="userData; else nodata">
+<h1>{{userData.firstName}}</h1>
+</div>
+
+<ng-template #nodata>
+    <h1>No user exist</h1>
+</ng-template>

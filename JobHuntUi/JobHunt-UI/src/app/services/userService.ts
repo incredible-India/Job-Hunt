@@ -25,4 +25,9 @@ export class userService{
         const url = this.baseUrl + "jobhunt/user/registration";
         return this.http.post<any>(url,body)
     }
+
+    getUserById(id:number){
+        const url = this.baseUrl + `jobhunt/user/getUser/${id}`;
+        return this.http.get<any>(url)
+    }
 }
