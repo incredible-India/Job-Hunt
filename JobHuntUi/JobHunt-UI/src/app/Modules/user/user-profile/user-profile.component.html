@@ -9,9 +9,35 @@
 </div>
 
 <div *ngIf="userData; else nodata">
-<h1>{{userData.firstName}}</h1>
+
+    <div class="name">
+        <h3>{{userData.firstName}} {{userData.lastName}}</h3>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-6"><h3>{{userData.age}}</h3></div>
+            <div class="col-sm-6"><h3>{{userData.gender}}
+            <span *ngIf="userData.gender == 'male' "><i class="fa-solid fa-person"></i></span>
+            <span *ngIf="userData.gender == 'female' "><i class="fa-solid fa-person-dress"></i></span>
+            </h3></div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-sm-6"><a href="tel:+{{userData.phoneNo}}"><i class="fa-solid fa-phone"></i> {{userData.phoneNo}}</a> </div>
+            <div class="col-sm-6">{{userData.alternatePhoneNo}}</div>
+        </div>
+    </div>
+
+
 </div>
 
 <ng-template #nodata>
-    <h1>No user exist</h1>
+   <div class="container">
+    <h1 class="text-center">No user exist</h1>
+   </div>
 </ng-template>
