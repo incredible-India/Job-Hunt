@@ -30,4 +30,9 @@ export class userService{
         const url = this.baseUrl + `jobhunt/user/getUser/${id}`;
         return this.http.get<any>(url)
     }
+
+    getJobs(no:string) {
+        const url = this.baseUrl + `jobhunt/jobprovider/getProviderByMobileNo/${no}`;
+        return this.http.get<any>(url)
+    }
 }

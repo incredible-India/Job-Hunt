@@ -31,4 +31,9 @@ h3{
     bottom: 135px;
     left: 75px;
     font-size: 39px;
+    margin-bottom: -6.5rem;
+}
+
+.details {
+    margin-left: 60px;
 }
